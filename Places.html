@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌌Wiki-ПГ События Лагеря🌌</title>
+<style>
+    .logo1{
+    width:100px;
+    height:100px;
+  }
+  :root{
+    --primary:#5352EE;
+    --accent:#FFD166;
+    --light:#9996FF;
+    --ink:#242349;
+    --text:#565587;
+    --muted:#9998c0;
+    --gray-bg:#f6f6fb;
+    --tag-bg:#EDECFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:"Poppins","Segoe UI",Arial,sans-serif;
+    color:var(--ink);
+    background:#fff;
+  }
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  /* ===================== HEADER ===================== */
+  header.topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 60px; border-bottom:1px solid #eee;
+  }
+  .logo{font-size:26px; font-weight:600; color:var(--ink);}
+  .logo .dot{color:var(--accent);}
+  .top-right{display:flex; align-items:center; gap:22px;}
+  .socials{display:flex; gap:16px;}
+  .socials a{color:var(--primary); display:flex;}
+  .socials svg{width:19px; height:19px;}
+  .search-box{position:relative;}
+  .search-box input{
+    width:220px; padding:10px 40px 10px 16px; border:1px solid var(--light);
+    border-radius:4px; font-size:14px; outline:none; color:var(--ink);
+  }
+  .search-box input::placeholder{color:#b3b2df;}
+  .search-box svg{position:absolute; right:12px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--primary);}
+
+  nav.mainnav{background:var(--gray-bg);}
+  nav.mainnav ul{display:flex; justify-content:center; gap:46px; padding:18px 0;}
+  nav.mainnav a{font-weight:600; font-size:15px; color:var(--ink); display:flex; align-items:center; gap:5px;}
+  nav.mainnav li.active a{color:var(--primary);}
+  nav.mainnav a:hover{color:var(--primary);}
+
+  /* ===================== PAGE HERO ===================== */
+  .page-hero{padding:60px 24px 50px; text-align:center;}
+  .breadcrumb{
+    display:flex; justify-content:center; align-items:center; gap:8px;
+    font-size:14px; color:var(--muted); margin-bottom:26px;
+  }
+  .breadcrumb a{color:var(--muted);}
+  .breadcrumb .current{color:var(--primary); font-weight:600;}
+  .breadcrumb svg{width:15px; height:15px;}
+  .page-hero h1{font-size:38px; font-weight:800; color:var(--ink); margin-bottom:18px;}
+  .page-hero p{max-width:640px; margin:0 auto; color:var(--text); font-size:15px; line-height:1.8;}
+
+  /* ===================== MAIN LAYOUT ===================== */
+  .layout{
+    max-width:1300px; margin:0 auto; padding:0 60px 70px;
+    display:grid; grid-template-columns:2fr 1fr; gap:36px;
+  }
+
+  .posts-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:26px; align-content:start;
+  }
+  .post-card{
+    background:#fff; border-radius:8px; overflow:hidden;
+    box-shadow:0 6px 20px rgba(83,82,238,.08);
+  }
+  .post-card img{width:100%; height:190px; object-fit:cover;}
+  .post-body{padding:20px 22px 24px;}
+  .post-cat{color:var(--muted); font-size:14px; margin-bottom:10px;}
+  .post-title{font-size:17px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:18px;}
+  .post-author{display:flex; align-items:center; gap:12px;}
+  .post-author img{width:38px; height:38px; border-radius:50%; object-fit:cover;}
+  .post-author .n{font-weight:700; font-size:13.5px; color:var(--ink);}
+  .post-author .d{font-size:12.5px; color:var(--muted); margin-top:2px;}
+
+  /* ===================== SIDEBAR ===================== */
+  .sidebar{display:flex; flex-direction:column; gap:24px;}
+  .widget{
+    background:var(--gray-bg); border-radius:10px; padding:26px;
+  }
+  .widget-title{
+    font-size:17px; font-weight:700; color:var(--ink);
+    border-left:4px solid var(--accent); padding-left:12px; margin-bottom:20px;
+  }
+  .sidebar-search{position:relative;}
+  .sidebar-search input{
+    width:100%; padding:13px 46px 13px 16px; border:1px solid #e2e1f5;
+    border-radius:6px; font-size:14px; outline:none;
+  }
+  .sidebar-search svg{
+    position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    width:17px; height:17px; color:var(--primary);
+  }
+  .cat-list li{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 0; border-bottom:1px solid #e6e5f5; font-size:14.5px; color:var(--text);
+  }
+  .cat-list li:last-child{border-bottom:none;}
+  .cat-list li:hover{color:var(--primary);}
+  .cat-list .count{color:var(--muted); font-size:13px;}
+  .recent-post{display:flex; gap:14px; align-items:flex-start; margin-bottom:18px;}
+  .recent-post:last-child{margin-bottom:0;}
+  .recent-post img{width:64px; height:64px; object-fit:cover; border-radius:6px; flex-shrink:0;}
+  .recent-post h4{font-size:14px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:6px;}
+  .recent-post .d{font-size:12.5px; color:var(--muted); font-style:italic;}
+  .tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .tags span{
+    background:#fff; color:var(--text); font-size:13px; font-weight:600;
+    padding:7px 14px; border-radius:20px; cursor:default;
+  }
+  .tags span:hover{background:var(--primary); color:#fff;}
+
+  /* ===================== PAGINATION ===================== */
+  .pagination{
+    display:flex; justify-content:center; gap:10px; margin:50px 0 60px;
+  }
+  .pagination a, .pagination span.dots{
+    width:38px; height:38px; border-radius:50%; border:1.5px solid var(--light);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:600; color:var(--primary);
+  }
+  .pagination a.active{background:var(--primary); border-color:var(--primary); color:#fff;}
+  .pagination a:hover{background:var(--tag-bg);}
+  .pagination span.dots{border:none; color:var(--muted);}
+
+  /* ===================== FOOTER ===================== */
+  footer{padding:0 60px 40px;}
+  .footer-top{
+    max-width:1300px; margin:0 auto; border-top:1px solid #eee;
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:30px;
+    padding:50px 0 40px;
+  }
+  .footer-top h3.brand{font-size:24px; font-weight:600; color:var(--ink); margin-bottom:18px;}
+  .footer-top p{font-size:14px; color:var(--text); line-height:1.8;}
+  .footer-top .contact-line{margin-top:14px; font-size:14px; color:var(--text);}
+  .footer-social{display:flex; gap:10px; margin-top:20px;}
+  .footer-social a{
+    width:36px; height:36px; border-radius:50%; border:1.5px solid #ddd;
+    display:flex; align-items:center; justify-content:center; color:var(--ink);
+  }
+  .footer-social a:hover{background:var(--primary); border-color:var(--primary); color:#fff;}
+  .footer-col h4{font-size:15px; font-weight:700; color:var(--ink); margin-bottom:18px;}
+  .footer-col li{margin-bottom:12px;}
+  .footer-col a{font-size:14px; color:var(--text);}
+  .footer-col a:hover{color:var(--primary);}
+  .footer-bottom{
+    max-width:1300px; margin:0 auto; border-top:1px solid #eee; padding-top:24px;
+    text-align:center; font-size:13px; color:var(--muted);
+  }
+  .footer-bottom b{color:var(--ink);}
+  .footer-bottom .credit{margin-top:6px;}
+  .footer-bottom .credit a{color:var(--primary); font-weight:600;}
+
+  .scroll-top{
+    position:fixed; right:24px; bottom:24px;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 16px rgba(83,82,238,.35); cursor:pointer;
+  }
+  .scroll-top svg{width:20px; height:20px;}
+
+  @media (max-width:1000px){
+    header.topbar{flex-direction:column; gap:16px; padding:18px 24px;}
+    nav.mainnav ul{flex-wrap:wrap; gap:20px; padding:16px;}
+    .layout{grid-template-columns:1fr; padding:0 24px 50px;}
+    .posts-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr; padding:50px 24px 40px;}
+    footer{padding:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="topbar">
+  <div> <img class="logo1" src="photo/1.png"> </div>
+</header>
+
+<header class="topbar">
+  <div class="logo"><span class="dot"></span></div>
+  <div class="top-right">
+    <div class="socials">
+      
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Поиск..">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+  </div>
+</header>
+
+<nav class="mainnav">
+  <ul>
+    <li><a href="http://127.0.0.1:5500/Index.html">🏙️Главная🏙️</a></li>
+    <li><a href="http://127.0.0.1:5500/opros_lager.html">📜Квест о лагере📜</a></li>
+    <li class="active"><a href="http://127.0.0.1:5500/Places.html">🌌События лагеря🌌</a></li>
+    <li><a href="http://127.0.0.1:5500/map.html">🗺️Карта лагеря🗺️</a></li>
+    <li><a href="http://127.0.0.1:5500/opros_kuratori.html">❓Квест о Пед. составе❓</a></li>
+    <li><a href="http://127.0.0.1:5500/Pedsostav%20(1).html">💼Наш Педагогический состав💼</a></li>
+  </ul>
+</nav>
+
+<!-- ===================== PAGE HERO ===================== -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+    <a href="http://127.0.0.1:5500/Index.html">Главная</a> / <a href="http://127.0.0.1:5500/Places.html">События лагеря</a> / <span class="current">События лагеря</span>
+  </div>
+  <h1>Основные События лагеря</h1>
+  <p>Ниже представлены самые важные события лагеря, по мнению WEB-Бюро</p>
+</div>
+
+<!-- ===================== MAIN LAYOUT ===================== -->
+<div class="layout">
+
+  <!-- posts grid -->
+  <div class="posts-grid">
+
+    <div class="post-card">
+      <img src="photo/GEZ4-y_89A9SKUS8hij-rfXk0CE6QVfpubWkLtpDPVxKopwRCu894ztMKWfGjvOffvlfqAKu19JuDP-fBCi3MNBp.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Открытие смены-[прошло]</div>
+        <div class="post-title">Мероприятие, на котором жителям проектограда сообщают о бюро,факультативах, а также педагогическом составе лагеря 
+          
+          Момент проведения:🕒 13.07.2026</div>
+        <div class="post-author">
+          <img src="photo/525328467021114352.jpg" alt="">
+          <div><div class="n">Даниил Павлов</div><div class="d">Организатор: Програмный  директор лагеря</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/qpW3Cv0bHUVV-M1cevYOsJThb310iTMPnbWr1EjPvcWTb2VDc4BXXRxqrmKy25CSQOtMCiFjggGyrcOJADJoh7tS.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Инаугурация мэра-[Прошла]</div>
+        <div class="post-title">Мероприятие, на котором мэр оффициально вступает в должность.
+          
+          Момент проведения:🕒 15.07.2026
+        </div>
+        <div class="post-author">
+          <img src="photo/SjNT76MLdLKx7HNb_YdzC5_JGoCFnL4SH_7bVBpwNK_D4J6AS-BiVyfztgTjg198wmgxwg3irqMNhROb_lbgU6TU.jpg" alt="">
+          <div><div class="n">Анастасия Арончик</div><div class="d">Организатор текущий смены</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/N7T3LgKAoePx6U-MRTxpLqZQNkPiQpEbgo--USiaR7l_y_wPKaToVfiYx7D1Z3nUNjkSOeeJGWdIRl-HnNcWVr6j.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Стратегическая игра-[Прошла]</div>
+        <div class="post-title">Игра,которая чаще всего проходит на улице,созданная для сплочения коллектива,поднятия духа,а также для создания хорошения настроения.
+          Момент проведения:🕒 19.07.2026</div>
+        <div class="post-author">
+          <img src="photo/SjNT76MLdLKx7HNb_YdzC5_JGoCFnL4SH_7bVBpwNK_D4J6AS-BiVyfztgTjg198wmgxwg3irqMNhROb_lbgU6TU.jpg" alt="">
+          <div><div class="n">Анастасия Арончик</div><div class="d">Организатор текущий смены</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/k38MUblmiWRFx9Zp2KirtXVBE3yFhrIplEAG5uQL1KvKpd8ftzp4LwkP0wtZvWfrhoW8MbaBydws_8qyNP1LzcYI.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Защита итоговых проектов(бюро)-[Проходит сейчас]</div>
+        <div class="post-title">Мероприятие, на котром все бюро "отчитываются",показывая проделанную работу за всю смену, в виде проектов от их бюро,перед жителями проектограда.
+          <p></p> Момент проведения:🕒 22.07.2026 </p>
+        </div>
+        <div class="post-author">
+          <img src="photo/1565794211560360707.jpg" alt="">
+          <div><div class="n">Мария Сигарёва</div><div class="d">Организатор: Руководитель Пресс-центра лагеря,координатор экспертов.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/rtgZmCGpFNAg8Jqf7N4l26_OZqWcUA-d7sH3FPekBhUD4e6Erl2SAeOxXDl_0ops8pfDvXrtt9M03Uxwn_mxYyIB.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Обнимашки-[Планируется на будущее]</div>
+        <div class="post-title">Мероприятие,на котором жители лагеря делятся самыми сокровенными эмоциями между собой,закрепляя это завязыванием ниточек.
+          <p> Момент проведения:🕒 23.07.2026</p>
+        </div>
+        <div class="post-author">
+          <img src="photo/uKBhZE8CvVQcCR-zKXZkdZ362eWR_IRRApzBL2TEH7JLWY41a06nhwt3DTQuLXvyeJdbh-AddzdSCzqe9nDBEAtw.jpg" alt="">
+          <div><div class="n">Надежда Комардина</div><div class="d">Организатор: Звукорежиссёр</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/wn3KwTB56WqE-eb7nJgkMJsoBxVRGVB8wRB9l-byX3bqflMwx994RMFyy3WtYd4tS7t5iYUOlQemv_hCe_i1ix8e.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Финальный костёр-[Планируется на будущее]</div>
+        <div class="post-title">Мероприятие,на котром все участники лагеря поют песни под гетару около костра.
+          <p> Момент проведения:🕒 23.07.2026</p>
+        </div>
+        
+        <div class="post-author">
+          <img src="photo/519918968596703598.jpg" alt="">
+          <div><div class="n">Светлана Золотарёва</div><div class="d">Организатор: Координатор кураторов</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- sidebar -->
+  <div class="sidebar">
+
+    <div class="widget">
+      <div class="widget-title">Поиск мероприятий</div>
+      <div class="sidebar-search">
+        <input type="text" placeholder="Поиск..">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">Категории</div>
+      <ul class="cat-list">
+        <li><span>Спокойные</span> <span class="count">(4)</span></li>
+        <li><span>Дискотеки</span> <span class="count">(3)</span></li>
+        <li><span>От-бюро</span> <span class="count">(6)</span></li>
+        <li><span>Киношные</span> <span class="count">(3)</span></li>
+        <li><span>Уличные</span> <span class="count">(4)</span></li>
+        <li><span>Лекции</span> <span class="count">(1)</span></li>
+      </ul>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">Иные мероприятия</div>
+
+      <div class="recent-post">
+        <img src="photo/QVvELfv3rULLg2b_F8iio3gCu84LoMqOP2nRV72M4t0Inm0F67aUsj2oMHLpgEYRzaMoqPp_1axhuAtz0rNF7T2v.jpg" alt="">
+        <div><h4>Кинокит-[прошёл]</h4><div class="d">Момент проведения:🕒 20.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/fDdQFbogymJvdM7N-s3t7z9RGiYuX80wnizJmoi8po2IXLZUOMdcmo-qXG_VmkOScNI-gTRWLnlKdvZfE2CT0YSG.jpg" alt="">
+        <div><h4>Финальная дискотека-[планируется]</h4><div class="d">Момент проведения:🕒 23.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/1wv-3Ri6AmYuaoioCi1QCgNG_TijUI3EvgQoDX0oeHBJ3yROe5hWH0GvlWZmdHCxt2dVG9O2OITcCt81H1liN1d-.jpg" alt="">
+        <div><h4>Танцевальная программа подиум-[прошла]</h4><div class="d">Момент проведения:🕒 23.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/D7lyzsYpZ6doES-JW1OahaWGFUGBGtFbU1EDz9ic3s6zQwqNtQSm6svK-PSqUtsHzCrAT6nLypGKzx_CrcZbSaDm.jpg" alt="">
+        <div><h4> Заполнение дневников-[планируется]</h4><div class="d">Момент проведения:🕒 17.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/UCNtuHAZRR_bciztLfSE1MrJVn7C_VcnjH3Id0wW-utd8qRk4WEmmw0L8EJ5S1pyBrP-td52GkShbYVN3tApod42.jpg" alt="">
+        <div><h4>Показ итоговых проектов(районов)-[прошла]</h4><div class="d">Момент проведения:🕒 21.07.2026</div></div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">Подсказки</div>
+      <div class="tags">
+        <span>Интересное</span><span>Бюро</span><span>На улице</span><span>Вечернее</span>
+        <span>Активные</span><span>У костра</span><span>Спокойное</span><span>Танцы</span>
+        <span>Работа</span><span>Факультативы</span><span>Районы</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <h3 class="brand">Информация</h3>
+      <p>WEB-Бюро<br>Посёлок,База отдыха"солнечная поляна",к2</p>
+      <p class="contact-line"><b>Phone:</b> #########</p>
+      <p class="contact-line"><b>Email:</b> info@example.com</p>
+    </div>
+
+
+    <div class="footer-col">
+      <h4>Основа</h4>
+      <ul>
+        <li><a href="http://127.0.0.1:5500/Index.html#">Главная</a></li>
+        <li><a href="http://127.0.0.1:5500/map.html">Карта</a></li>
+        <li><a href="http://127.0.0.1:5500/opros_lager.html">Квест о лагере</a></li>
+        <li><a href="http://127.0.0.1:5500/Places.html">События смены</a></li>
+        <li><a href="http://127.0.0.1:5500/opros_kuratori.html">Квест о Пед. составе</a></li>
+        <li><a href="http://127.0.0.1:5500/Pedsostav%20(1).html">Наш Педагогический состав</a></li>
+      </ul>
+    </div>
+
+  
+
+  <div class="footer-bottom">
+    © 2026 Wiki-ПГ. Все права защищены.
+  </div>
+</footer>
+
+<div class="scroll-top" title="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</div>
+
+</body>
+</html>
