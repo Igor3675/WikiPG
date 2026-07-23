@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="ru">
 <head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🏙️Wiki-ПГ Главная🏙️</title>
+<title>🌌Wiki-ПГ События Лагеря🌌</title>
 <style>
     .logo1{
     width:100px;
@@ -19,30 +16,18 @@
     --ink:#242349;
     --text:#565587;
     --muted:#9998c0;
-    --bg:#fff;
     --gray-bg:#f6f6fb;
     --tag-bg:#EDECFF;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
-    font-family:"Manrope","Segoe UI",Arial,sans-serif;
-    color:var(--ink);
-,"Segoe UI",Arial,sans-serif;
+    font-family:"Poppins","Segoe UI",Arial,sans-serif;
     color:var(--ink);
     background:#fff;
   }
   a{text-decoration:none; color:inherit;}
   ul{list-style:none;}
   img{max-width:100%; display:block;}
-  section{padding:70px 60px;}
-  .section-head{max-width:1300px; margin:0 auto 40px;}
-  .eyebrow{
-    display:flex; align-items:center; gap:14px;
-    color:var(--light); font-size:13px; font-weight:600;
-    letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;
-  }
-  .eyebrow::after{content:""; height:2px; width:160px; background:var(--accent);}
-  h2.title{font-size:30px; font-weight:800; color:var(--ink);}
 
   /* ===================== HEADER ===================== */
   header.topbar{
@@ -51,144 +36,114 @@
   }
   .logo{font-size:26px; font-weight:600; color:var(--ink);}
   .logo .dot{color:var(--accent);}
+  .top-right{display:flex; align-items:center; gap:22px;}
   .socials{display:flex; gap:16px;}
   .socials a{color:var(--primary); display:flex;}
   .socials svg{width:19px; height:19px;}
+  .search-box{position:relative;}
+  .search-box input{
+    width:220px; padding:10px 40px 10px 16px; border:1px solid var(--light);
+    border-radius:4px; font-size:14px; outline:none; color:var(--ink);
+  }
+  .search-box input::placeholder{color:#b3b2df;}
+  .search-box svg{position:absolute; right:12px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--primary);}
 
   nav.mainnav{background:var(--gray-bg);}
-  nav.mainnav ul{
-    display:flex; justify-content:center; gap:46px; padding:18px 0;
-  }
+  nav.mainnav ul{display:flex; justify-content:center; gap:46px; padding:18px 0;}
   nav.mainnav a{font-weight:600; font-size:15px; color:var(--ink); display:flex; align-items:center; gap:5px;}
   nav.mainnav li.active a{color:var(--primary);}
   nav.mainnav a:hover{color:var(--primary);}
 
-  /* ===================== HERO GRID ===================== */
-  .hero-grid{
-    max-width:1300px; margin:50px auto 0;
-    display:grid; grid-template-columns:2fr 1fr; gap:16px;
+  /* ===================== PAGE HERO ===================== */
+  .page-hero{padding:60px 24px 50px; text-align:center;}
+  .breadcrumb{
+    display:flex; justify-content:center; align-items:center; gap:8px;
+    font-size:14px; color:var(--muted); margin-bottom:26px;
   }
-  .card-photo{
-    position:relative; border-radius:10px; overflow:hidden;
-    display:flex; align-items:flex-end; min-height:260px;
-    background-size:cover; background-position:center; color:#fff;
-  }
-  .card-photo::before{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(to top, rgba(36,35,73,.8) 0%, rgba(36,35,73,.2) 45%, rgba(36,35,73,0) 75%);
-  }
-  .card-photo .cc{position:relative; padding:22px 26px; width:100%;}
-  .card-photo .meta{display:flex; align-items:center; gap:10px; font-size:13px; margin-bottom:10px;}
-  .card-photo .meta .dot-sep{width:4px; height:4px; border-radius:50%; background:#fff; opacity:.7;}
-  .card-photo .ct{font-size:20px; font-weight:600; line-height:1.3;}
-  .card-photo.big{grid-column:1; grid-row:1; min-height:440px; background-image:linear-gradient(rgba(30,30,60,.1),rgba(30,30,60,.1)),url(photo/Обложка-смены-3-1536x864.jpg);}
-  .card-photo.big .ct{font-size:28px;}
-  .card-photo.tall{grid-column:2; grid-row:1; min-height:440px; background-image:linear-gradient(rgba(20,30,20,.1),rgba(20,30,20,.1)),url(photo/Обложка-смены-4-1536x864.jpg);}
-  .hero-bottom{grid-column:1/span 2; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  .card-photo.small{min-height:220px;}
-  .c1{background-image:linear-gradient(rgba(20,10,5,.15),rgba(20,10,5,.15)),url(photo/Обложка-смены-2-768x432.jpg);}
-  .c2{background-image:linear-gradient(rgba(10,10,10,.1),rgba(10,10,10,.1)),url(photo/Обложка-смены-1-768x432.jpg);}
-  .c3{background-image:linear-gradient(rgba(10,10,10,.1),rgba(10,10,10,.1)),url(photo/Обложка-смены-1536x864.jpg);}
+  .breadcrumb a{color:var(--muted);}
+  .breadcrumb .current{color:var(--primary); font-weight:600;}
+  .breadcrumb svg{width:15px; height:15px;}
+  .page-hero h1{font-size:38px; font-weight:800; color:var(--ink); margin-bottom:18px;}
+  .page-hero p{max-width:640px; margin:0 auto; color:var(--text); font-size:15px; line-height:1.8;}
 
-  /* ===================== FEATURED POSTS ===================== */
-  .featured-grid{
-    max-width:1300px; margin:0 auto;
-    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;  
+  /* ===================== MAIN LAYOUT ===================== */
+  .layout{
+    max-width:1300px; margin:0 auto; padding:0 60px 70px;
+    display:grid; grid-template-columns:2fr 1fr; gap:36px;
   }
-  .fcard{
-    position:relative; border-radius:10px; overflow:hidden; min-height:600px;
-    display:flex; align-items:flex-end; color:#fff; background-size:cover; background-position:center;
-  }
-  .fcard::before{content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(20,20,45,.9) 0%, rgba(20,20,45,.15) 55%, rgba(20,20,45,0) 80%);}
-  .fcard .fc{position:relative; padding:26px 28px; width:100%;}
-  .fcard .meta{display:flex; flex-wrap:wrap; align-items:center; gap:16px; font-size:13px; margin-bottom:16px; opacity:.95;}
-  .fcard .meta span{display:flex; align-items:center; gap:6px;}
-  .fcard .meta svg{width:14px; height:14px;}
-  .fcard h3{font-size:21px; font-weight:700; line-height:1.35; margin-bottom:14px;}
-  .fcard p{font-size:13.5px; line-height:1.7; opacity:.9; margin-bottom:18px;}
-  .fcard .more{display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:14px; color:var(--accent);}
-  .f1{background-image:url(photo/Ml_J96fNQVfH6FQ5q7Bw1vpG7W2XCWbBW4iqN3-C0Qe_ZnCzI-fhsnEqzr5_3qCc3fQGbiETEdBWyXUCzkutZ9Wy.jpg);}
-  .f2{background-image:url(photo/qpW3Cv0bHUVV-M1cevYOsJThb310iTMPnbWr1EjPvcWTb2VDc4BXXRxqrmKy25CSQOtMCiFjggGyrcOJADJoh7tS.jpg);}
-  .f3{background-image:url(photo/GEZ4-y_89A9SKUS8hij-rfXk0CE6QVfpubWkLtpDPVxKopwRCu894ztMKWfGjvOffvlfqAKu19JuDP-fBCi3MNBp.jpg);}
 
-  /* ===================== CATEGORY SECTION ===================== */
-  .cat-top{
-    max-width:1300px; margin:0 auto 50px;
-    display:grid; grid-template-columns:repeat(3,1fr); gap:30px;
-  }
-  .cat-top img{width:100%; height:230px; object-fit:cover; border-radius:8px; margin-bottom:18px;}
-  .cat-label{color:var(--primary); font-size:12px; font-weight:700; letter-spacing:.5px; margin-bottom:12px;}
-  .cat-author{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
-  .cat-author img{width:30px; height:30px; border-radius:50%; margin:0; object-fit:cover;}
-  .cat-author .who{font-size:14px; font-weight:600; color:var(--ink);}
-  .cat-author .when{font-size:13px; color:var(--muted);}
-  .cat-top h3{font-size:19px; font-weight:700; color:var(--ink); line-height:1.4;}
-
-  .cat-bottom{
-    max-width:1300px; margin:0 auto;
-    display:grid; grid-template-columns:repeat(3,1fr); gap:30px 40px;
-  }
-  .scroll-top{
-    position:fixed; right:24px; bottom:24px;
-    width:46px; height:46px; border-radius:50%;
-    background:var(--primary); color:#fff;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 6px 16px rgba(83,82,238,.35); cursor:pointer;
-  }
-  .scroll-top svg{width:20px; height:20px;}
-  .mini-post{display:flex; gap:16px; align-items:flex-start;}
-  .mini-post img{width:80px; height:80px; object-fit:cover; border-radius:6px; flex-shrink:0;}
-  .mini-post .cat-label{margin-bottom:6px;}
-  .mini-post h4{font-size:15px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:8px;}
-  .mini-post .when{font-size:12.5px; color:var(--muted);}
-
-  /* ===================== LATEST POSTS ===================== */
-  .latest-grid{
-    max-width:1300px; margin:0 auto;
-    display:grid; grid-template-columns:repeat(3,1fr); gap:30px;
+  .posts-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:26px; align-content:start;
   }
   .post-card{
-    background:#fff; border-radius:8px; box-shadow:0 10px 30px rgba(83,82,238,.08); overflow:hidden;
+    background:#fff; border-radius:8px; overflow:hidden;
+    box-shadow:0 6px 20px rgba(83,82,238,.08);
   }
-  .post-card img{width:100%; height:270px; object-fit:cover;}
-  .post-body{padding:24px 26px 28px;}
+  .post-card img{width:100%; height:190px; object-fit:cover;}
+  .post-body{padding:20px 22px 24px;}
   .post-cat{color:var(--muted); font-size:14px; margin-bottom:10px;}
-  .post-title{font-size:19px; font-weight:700; color:var(--ink); line-height:1.35; margin-bottom:20px;}
+  .post-title{font-size:17px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:18px;}
   .post-author{display:flex; align-items:center; gap:12px;}
-  .post-author img{width:42px; height:42px; border-radius:50%; object-fit:cover;}
-  .post-author .n{font-weight:700; font-size:14px; color:var(--ink);}
-  .post-author .d{font-size:13px; color:var(--muted); margin-top:2px;}
+  .post-author img{width:38px; height:38px; border-radius:50%; object-fit:cover;}
+  .post-author .n{font-weight:700; font-size:13.5px; color:var(--ink);}
+  .post-author .d{font-size:12.5px; color:var(--muted); margin-top:2px;}
 
-  /* ===================== NEWSLETTER ===================== */
-  .newsletter{
-    max-width:1300px; margin:0 auto; background:var(--gray-bg);
-    border-radius:16px; padding:70px 60px;
-    display:grid; grid-template-columns:1fr 300px; align-items:center; gap:30px;
+  /* ===================== SIDEBAR ===================== */
+  .sidebar{display:flex; flex-direction:column; gap:24px;}
+  .widget{
+    background:var(--gray-bg); border-radius:10px; padding:26px;
   }
-  .newsletter h2{font-size:32px; font-weight:800; color:var(--ink); margin-bottom:18px;}
-  .newsletter p{font-size:15px; color:var(--text); line-height:1.7; margin-bottom:30px; max-width:520px;}
-  .sub-form{display:flex; max-width:480px;}
-  .sub-form input{
-    flex:1; padding:15px 20px; border:1.5px solid var(--light);
-    border-radius:30px 0 0 30px; outline:none; font-size:14px;
+  .widget-title{
+    font-size:17px; font-weight:700; color:var(--ink);
+    border-left:4px solid var(--accent); padding-left:12px; margin-bottom:20px;
   }
-  .sub-form button{
-    background:var(--primary); color:#fff; border:none; padding:0 32px;
-    border-radius:0 30px 30px 0; font-weight:700; font-size:14px; cursor:pointer;
+  .sidebar-search{position:relative;}
+  .sidebar-search input{
+    width:100%; padding:13px 46px 13px 16px; border:1px solid #e2e1f5;
+    border-radius:6px; font-size:14px; outline:none;
   }
-  .sub-form button:hover{background:#403fd1;}
-  .newsletter-img{
-    border-radius:12px; height:280px;
-    background:linear-gradient(160deg,#e4e3ff,#f6f6fb);
-    display:flex; align-items:center; justify-content:center; font-size:60px;
+  .sidebar-search svg{
+    position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    width:17px; height:17px; color:var(--primary);
   }
+  .cat-list li{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 0; border-bottom:1px solid #e6e5f5; font-size:14.5px; color:var(--text);
+  }
+  .cat-list li:last-child{border-bottom:none;}
+  .cat-list li:hover{color:var(--primary);}
+  .cat-list .count{color:var(--muted); font-size:13px;}
+  .recent-post{display:flex; gap:14px; align-items:flex-start; margin-bottom:18px;}
+  .recent-post:last-child{margin-bottom:0;}
+  .recent-post img{width:64px; height:64px; object-fit:cover; border-radius:6px; flex-shrink:0;}
+  .recent-post h4{font-size:14px; font-weight:700; color:var(--ink); line-height:1.4; margin-bottom:6px;}
+  .recent-post .d{font-size:12.5px; color:var(--muted); font-style:italic;}
+  .tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .tags span{
+    background:#fff; color:var(--text); font-size:13px; font-weight:600;
+    padding:7px 14px; border-radius:20px; cursor:default;
+  }
+  .tags span:hover{background:var(--primary); color:#fff;}
+
+  /* ===================== PAGINATION ===================== */
+  .pagination{
+    display:flex; justify-content:center; gap:10px; margin:50px 0 60px;
+  }
+  .pagination a, .pagination span.dots{
+    width:38px; height:38px; border-radius:50%; border:1.5px solid var(--light);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:600; color:var(--primary);
+  }
+  .pagination a.active{background:var(--primary); border-color:var(--primary); color:#fff;}
+  .pagination a:hover{background:var(--tag-bg);}
+  .pagination span.dots{border:none; color:var(--muted);}
 
   /* ===================== FOOTER ===================== */
-  footer{padding:60px 60px 40px;}
+  footer{padding:0 60px 40px;}
   .footer-top{
-    max-width:1300px; margin:0 auto;
+    max-width:1300px; margin:0 auto; border-top:1px solid #eee;
     display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:30px;
-    padding-bottom:40px;
+    padding:50px 0 40px;
   }
   .footer-top h3.brand{font-size:24px; font-weight:600; color:var(--ink); margin-bottom:18px;}
   .footer-top p{font-size:14px; color:var(--text); line-height:1.8;}
@@ -207,310 +162,224 @@
     max-width:1300px; margin:0 auto; border-top:1px solid #eee; padding-top:24px;
     text-align:center; font-size:13px; color:var(--muted);
   }
+  .footer-bottom b{color:var(--ink);}
+  .footer-bottom .credit{margin-top:6px;}
+  .footer-bottom .credit a{color:var(--primary); font-weight:600;}
+
+  .scroll-top{
+    position:fixed; right:24px; bottom:24px;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 16px rgba(83,82,238,.35); cursor:pointer;
+  }
+  .scroll-top svg{width:20px; height:20px;}
 
   @media (max-width:1000px){
-    section{padding:50px 24px;}
-    .hero-grid{grid-template-columns:1fr;}
-    .card-photo.big,.card-photo.tall{grid-column:1;}
-    .hero-bottom{grid-column:1; grid-template-columns:1fr;}
-    .featured-grid, .cat-top, .cat-bottom, .latest-grid{grid-template-columns:1fr;}
-    .newsletter{grid-template-columns:1fr;}
-    .footer-top{grid-template-columns:1fr 1fr;}
-    nav.mainnav ul{flex-wrap:wrap; gap:20px;}
+    header.topbar{flex-direction:column; gap:16px; padding:18px 24px;}
+    nav.mainnav ul{flex-wrap:wrap; gap:20px; padding:16px;}
+    .layout{grid-template-columns:1fr; padding:0 24px 50px;}
+    .posts-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr 1fr; padding:50px 24px 40px;}
+    footer{padding:0;}
   }
 </style>
 </head>
 <body>
 
 <!-- ===================== HEADER ===================== -->
- <header class="topbar">
+<header class="topbar">
   <div> <img class="logo1" src="photo/1.png"> </div>
 </header>
+
+<header class="topbar">
+  <div class="logo"><span class="dot"></span></div>
+  <div class="top-right">
+    <div class="socials">
+      
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="Поиск..">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+  </div>
+</header>
+
 <nav class="mainnav">
   <ul>
-    <li class="active"><a href="http://127.0.0.1:5500/index.html">🏙️Главная🏙️</a></li>
-    <li><a href="http://127.0.0.1:5500/Places.html">🌌События лагеря🌌</a></li>
+    <li><a href="http://127.0.0.1:5500/index.html">🏙️Главная🏙️</a></li>
     <li><a href="http://127.0.0.1:5500/opros_lager.html">📜Квест о лагере📜</a></li>
-    <li><a href="http://127.0.0.1:5500/map.html">🗺️Карта Лагеря🗺️</a></li>
+    <li class="active"><a href="http://127.0.0.1:5500/Places.html">🌌События лагеря🌌</a></li>
+    <li><a href="http://127.0.0.1:5500/map.html">🗺️Карта лагеря🗺️</a></li>
     <li><a href="http://127.0.0.1:5500/opros_kuratori.html">❓Квест о Пед. составе❓</a></li>
     <li><a href="http://127.0.0.1:5500/Pedsostav%20(1).html">💼Наш Педагогический состав💼</a></li>
   </ul>
 </nav>
 
-<!-- ===================== HERO GRID ===================== -->
-<section>
-  <div class="hero-grid">
-    <div class="card-photo big">
-      <div class="cc">
-        <div class="meta"><span>Сезон креативных индустрий</span><span class="dot-sep"></span><span>Сейчас идёт</span></div>
-        <div class="ct"></div>
-      </div>
-    </div>
-    <div class="card-photo tall">
-      <div class="cc">
-        <div class="meta"><span>Сезон игровой мультивселенной</span><span class="dot-sep"></span><span>Прошёл</span></div>
-        <div class="ct"></div>
-      </div>
-    </div>
-    <div class="hero-bottom">
-      <div class="card-photo small c1">
-        <div class="cc">
-          <div class="meta"><span>Сезон цифрового искусства</span><span class="dot-sep"></span><span>Прошёл</span></div>
-          <div class="ct"></div>
-        </div>
-      </div>
-      <div class="card-photo small c2">
-        <div class="cc">
-          <div class="meta"><span>Сезон научных фестивалей</span><span class="dot-sep"></span><span>Прошёл</span></div>
-          <div class="ct"></div>
-        </div>
-      </div>
-      <div class="card-photo small c3">
-        <div class="cc">
-          <div class="meta"><span>Сезон космических путешествий</span><span class="dot-sep"></span><span>Прошёл</span></div>
-          <div class="ct"></div>
-        </div>
-      </div>
-    </div>
+<!-- ===================== PAGE HERO ===================== -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>
+    <a href="http://127.0.0.1:5500/index.html">Главная</a> / <a href="http://127.0.0.1:5500/Places.html">События лагеря</a> / <span class="current">События лагеря</span>
   </div>
-</section>
+  <h1>Основные События лагеря</h1>
+  <p>Ниже представлены самые важные события лагеря, по мнению WEB-Бюро</p>
+</div>
 
-<!-- ===================== FEATURED POSTS ===================== -->
-<section>
-  <div class="section-head">
-    <div class="eyebrow">Краткая инф.</div>
-    <h2 class="title">Основные события лагеря</h2>
-  </div>
-  <div class="featured-grid">
+<!-- ===================== MAIN LAYOUT ===================== -->
+<div class="layout">
 
-    <div class="fcard f1">
-      <div class="fc">
-        <div class="meta">
-          <span>Прошла</span>
-          <span>🕒 19.07.2026</span>
-        </div>
-        <div class="meta" style="margin-top:-8px;"><span>💬 популярное</span></div>
-        <h3>Стратегическая игра</h3>
-        <p>Игра в которой участвует весь лагерь, созданная для сплочения,улучшения коммуникации,а также хорошего время препровождения...</p>
-        <a class="more" href="http://127.0.0.1:5500/Places.html">Прочесть больше</a>
-      </div>
-    </div>
-
-    <div class="fcard f2">
-      <div class="fc">
-        <div class="meta">
-          <span>Прошла</span>
-          <span>🕒 15.07.2026 </span>
-        </div>
-        <div class="meta" style="margin-top:-8px;"><span>💬 Популярное</span></div>
-        <h3>Инаугурация мэра</h3>
-        <p>Торжственное вступление мэра в его должность...</p>
-        <a class="more" href="http://127.0.0.1:5500/Places.html">Прочесть больше</a>
-      </div>
-    </div>
-
-    <div class="fcard f3">
-      <div class="fc">
-        <div class="meta">
-          <span>Прошло</span>
-          <span>🕒 13.07.2026</span>
-        </div>
-        <div class="meta" style="margin-top:-8px;"><span>💬 Популярное</span></div>
-        <h3>Открытие сезона</h3>
-        <p>Торжественное начало(открытие) смены, проходящей в данный момент времени в лагере...</p>
-        <a class="more" href="http://127.0.0.1:5500/Places.html">Прочесть больше</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===================== CATEGORY SECTION ===================== -->
-<section style="background:var(--gray-bg);">
-  <div class="section-head">
-    <div class="eyebrow">Основная Инф.</div>
-    <h2 class="title">Любимые блюда лагеря</h2>
-  </div>
-
-  <div class="cat-top">
-    <div>
-      <img src="photo/ChatGPT Image Jul 20, 2026, 12_31_54 PM.png" alt="">
-      <div class="cat-label">Карбонара</div>
-      <div class="cat-author">
-        <img src="photo/KbPO7IuxMHL9xhfZcypM6eVAO6uS5xJj8KGqBX7jzxKBLpMYDEu9cb3NUc58H79bN5h6C-q6kdhXXCbLXItErTwr.jpg" alt="William G.">
-        <span class="who">Игорь Бабушкин</span> <span class="when">— 16.02.2000</span>
-      </div>
-      <h3>9 из 10</h3>
-    </div>
-    <div>
-      <img src="photo/ChatGPT Image Jul 20, 2026, 12_33_08 PM.png" alt="">
-      <div class="cat-label">Борщ с пампушками</div>
-      <div class="cat-author">
-        <img src="photo/AbJ7oBXEOw_ZVce-AKOgjmQZOd7FaY3S042ChsDTL2u8jsmm-H9jfivxtj5iWPUZMVHFi3rl1XK0QMkPKTxUut7G.jpg" alt="Emma D.">
-        <span class="who">Артём Худорожко</span> <span class="when">— 02.07.2001</span>
-      </div>
-      <h3>Нуу..пойдёт</h3>
-    </div>
-    <div>
-      <img src=photo/0.png alt="">
-      <div class="cat-label">Грибы с овощами</div>
-      <div class="cat-author">
-        <img src="photo/YAPeZ1lR1fVAC6JsX2hVwkfhcfqsx5wVXk31AH5_9bBn1KDS-5d9ICw5u2KUNVEBEBx64OYLYXNnEwh11qfaREgK.jpg" alt="James F.">
-        <span class="who">Егор Лаврененко</span> <span class="when">— 20.07.2026</span>
-      </div>
-      <h3>Очень вкусно.</h3>
-    </div>
-  </div>
-
-  <div class="cat-bottom">
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130620.png" alt="">
-      <div>
-        <div class="cat-label">Рыбные котлеты</div>
-        <h4>Похоже на...</h4>
-        <div class="when">2 seconds read • 6 Апреля 2026</div>
-      </div>
-    </div>
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130633.png" alt="">
-      <div>
-        <div class="cat-label">Говядина</div>
-        <h4>Таит во рту</h4>
-        <div class="when">2 seconds read • 12 Июля 2026</div>
-      </div>
-    </div>
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130715.png" alt="">
-      <div>
-        <div class="cat-label">Мясо с овощами</div>
-        <h4>Вкусно</h4>
-        <div class="when">2 seconds read • 9 Мая 2026</div>
-      </div>
-    </div>
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130651.png" alt="">
-      <div>
-        <div class="cat-label">Макороны с сыром</div>
-        <h4>Подаётся,как правило, очень часто</h4>
-        <div class="when">2 seconds read • 15 Июня 2026</div>
-      </div>
-    </div>
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130657.png" alt="">
-      <div>
-        <div class="cat-label">Куриные котлеты</div>
-        <h4>Податся с пюре,очень вкусные</h4>
-        <div class="when">4 seconds read • 18 Августа 2026</div>
-      </div>
-    </div>
-    <div class="mini-post">
-      <img src="photo/Снимок экрана 2026-07-20 130706.png" alt="">
-      <div>
-        <div class="cat-label">Запеканка</div>
-        <h4>Подаётся редко но вкусно</h4>
-        <div class="when">1 seconds read • 21 Ноября 2026</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== LATEST POSTS ===================== -->
-<section>
-  <div class="section-head">
-    <div class="eyebrow">Краткая инф.</div>
-    <h2 class="title">Бюро лагеря на данной смене</h2>
-  </div>
-  <div class="latest-grid">
+  <!-- posts grid -->
+  <div class="posts-grid">
 
     <div class="post-card">
-      <img src="photo/Psy-mini.jpg" alt="">
+      <img src="photo/GEZ4-y_89A9SKUS8hij-rfXk0CE6QVfpubWkLtpDPVxKopwRCu894ztMKWfGjvOffvlfqAKu19JuDP-fBCi3MNBp.jpg" alt="">
       <div class="post-body">
-        <div class="post-cat">PSY-бюро</div>
-        <div class="post-title">Ваш ребенок уже сейчас интересуется психологией? Специально для тех, кому интересно анализировать поведение окружающих и научиться управлять своими эмоциями, в «Проектограде» открыт набор сотрудников в «Psy-бюро»</div>
+        <div class="post-cat">Открытие смены-[прошло]</div>
+        <div class="post-title">Мероприятие, на котором жителям проектограда сообщают о бюро,факультативах, а также педагогическом составе лагеря 
+          
+          Момент проведения:🕒 13.07.2026</div>
         <div class="post-author">
-          <img src="photo/2278981356491574018.jpg" alt="">
-          <div><div class="n">Екатерина Кулешова</div><div class="d">Эксперт</div></div>
+          <img src="photo/525328467021114352.jpg" alt="">
+          <div><div class="n">Даниил Павлов</div><div class="d">Организатор: Програмный  директор лагеря</div></div>
         </div>
       </div>
     </div>
 
     <div class="post-card">
-      <img src="photo/Арт-mini.jpg" alt="">
+      <img src="photo/qpW3Cv0bHUVV-M1cevYOsJThb310iTMPnbWr1EjPvcWTb2VDc4BXXRxqrmKy25CSQOtMCiFjggGyrcOJADJoh7tS.jpg" alt="">
       <div class="post-body">
-        <div class="post-cat">АРТ-бюро</div>
-        <div class="post-title">Ваш ребенок — яркий индивидуалист и творческая личность с креативными идеями, которые требуют реализации? Он не любит «смешиваться с толпой», но, с другой стороны, ему важно находиться среди таких же креативных людей?</div>
-        <div class="post-author">
-          <img src="photo/2721567385473190657.jpg" alt="">
-          <div><div class="n">Ольга Крафченко</div><div class="d">Эксперт</div></div>
+        <div class="post-cat">Инаугурация мэра-[Прошла]</div>
+        <div class="post-title">Мероприятие, на котором мэр оффициально вступает в должность.
+          
+          Момент проведения:🕒 15.07.2026
         </div>
-      </div>
-    </div>
-
-    <div class="post-card">
-      <img src="photo/Д-mini.jpg" alt="">
-      <div class="post-body">
-        <div class="post-cat">Драмм-бюро</div>
-        <div class="post-title">Ваш ребенок интересуется творческими видами деятельности, и вы поддерживаете стремления своего ребенка в этих начинаниях? Эксперты «Драмбюро» «Проектограда» с удовольствием помогут вам в этом.</div>
-        <div class="post-author">
-          <img src="photo/0.jpg" alt="">
-          <div><div class="n">Анатолий Рогов</div><div class="d">Эксперт</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="post-card">
-      <img src="photo/Орг-mini.jpg" alt="">
-      <div class="post-body">
-        <div class="post-cat">ОРГ-бюро</div>
-        <div class="post-title">Ни один город не обходится без проведения праздников и мероприятий, и «Проектоград» —не исключение. Сотрудники «Оргбюро» за время смены станут настоящими профессионалами в вопросах разработки, организации и проведения мероприятий городского масштаба.</div>
         <div class="post-author">
           <img src="photo/SjNT76MLdLKx7HNb_YdzC5_JGoCFnL4SH_7bVBpwNK_D4J6AS-BiVyfztgTjg198wmgxwg3irqMNhROb_lbgU6TU.jpg" alt="">
-          <div><div class="n">Анастасия Арончик</div><div class="d">Эксперт-Организатор</div></div>
+          <div><div class="n">Анастасия Арончик</div><div class="d">Организатор текущий смены</div></div>
         </div>
       </div>
     </div>
 
     <div class="post-card">
-      <img src="photo/Web-mini.jpg" alt="">
+      <img src="photo/N7T3LgKAoePx6U-MRTxpLqZQNkPiQpEbgo--USiaR7l_y_wPKaToVfiYx7D1Z3nUNjkSOeeJGWdIRl-HnNcWVr6j.jpg" alt="">
       <div class="post-body">
-        <div class="post-cat">Web-бюро</div>
-        <div class="post-title">Ваш ребёнок увлекается современными технологиями, а вы хотите подарить ему возможность реализовать свои идеи в актуальной, современной и высокотехнологичной IT-отрасли? Тогда этим летом ваш ребёнок непременно должен стать сотрудником именно «Web-бюро»!</div>
+        <div class="post-cat">Стратегическая игра-[Прошла]</div>
+        <div class="post-title">Игра,которая чаще всего проходит на улице,созданная для сплочения коллектива,поднятия духа,а также для создания хорошения настроения.
+          Момент проведения:🕒 19.07.2026</div>
         <div class="post-author">
-          <img src="photo/5334842246765345111.jpg" alt="">
-          <div><div class="n">Игорь Бабушкин</div><div class="d">Эксперт</div></div>
+          <img src="photo/SjNT76MLdLKx7HNb_YdzC5_JGoCFnL4SH_7bVBpwNK_D4J6AS-BiVyfztgTjg198wmgxwg3irqMNhROb_lbgU6TU.jpg" alt="">
+          <div><div class="n">Анастасия Арончик</div><div class="d">Организатор текущий смены</div></div>
         </div>
       </div>
     </div>
 
     <div class="post-card">
-      <img src="photo/Медиа-mini.jpg" alt="">
+      <img src="photo/k38MUblmiWRFx9Zp2KirtXVBE3yFhrIplEAG5uQL1KvKpd8ftzp4LwkP0wtZvWfrhoW8MbaBydws_8qyNP1LzcYI.jpg" alt="">
       <div class="post-body">
-        <div class="post-cat">Медиа-бюро</div>
-        <div class="post-title">Ваш ребенок любит делиться с другими своими знаниями и историями, пробует себя в журналистике или искусстве, увлекается рекламой, готов познавать современные приложения и создавать контент? Значит «Медиабюро» «Проектограда» идеально ему подходит!</div>
+        <div class="post-cat">Защита итоговых проектов(бюро)-[Проходит сейчас]</div>
+        <div class="post-title">Мероприятие, на котром все бюро "отчитываются",показывая проделанную работу за всю смену, в виде проектов от их бюро,перед жителями проектограда.
+          <p></p> Момент проведения:🕒 22.07.2026 </p>
+        </div>
         <div class="post-author">
-          <img src="photo/unnamed.png" alt="">
-          <div><div class="n">Арина Павлова</div><div class="d">Организатор-Эксперт</div></div>
+          <img src="photo/1565794211560360707.jpg" alt="">
+          <div><div class="n">Мария Сигарёва</div><div class="d">Организатор: Руководитель Пресс-центра лагеря,координатор экспертов.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/rtgZmCGpFNAg8Jqf7N4l26_OZqWcUA-d7sH3FPekBhUD4e6Erl2SAeOxXDl_0ops8pfDvXrtt9M03Uxwn_mxYyIB.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Обнимашки-[Планируется на будущее]</div>
+        <div class="post-title">Мероприятие,на котором жители лагеря делятся самыми сокровенными эмоциями между собой,закрепляя это завязыванием ниточек.
+          <p> Момент проведения:🕒 23.07.2026</p>
+        </div>
+        <div class="post-author">
+          <img src="photo/uKBhZE8CvVQcCR-zKXZkdZ362eWR_IRRApzBL2TEH7JLWY41a06nhwt3DTQuLXvyeJdbh-AddzdSCzqe9nDBEAtw.jpg" alt="">
+          <div><div class="n">Надежда Комардина</div><div class="d">Организатор: Звукорежиссёр</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-card">
+      <img src="photo/wn3KwTB56WqE-eb7nJgkMJsoBxVRGVB8wRB9l-byX3bqflMwx994RMFyy3WtYd4tS7t5iYUOlQemv_hCe_i1ix8e.jpg" alt="">
+      <div class="post-body">
+        <div class="post-cat">Финальный костёр-[Планируется на будущее]</div>
+        <div class="post-title">Мероприятие,на котром все участники лагеря поют песни под гетару около костра.
+          <p> Момент проведения:🕒 23.07.2026</p>
+        </div>
+        
+        <div class="post-author">
+          <img src="photo/519918968596703598.jpg" alt="">
+          <div><div class="n">Светлана Золотарёва</div><div class="d">Организатор: Координатор кураторов</div></div>
         </div>
       </div>
     </div>
 
   </div>
-</section>
 
-<!-- ===================== NEWSLETTER ===================== -->
-<section>
-  <div class="newsletter">
-    <div>
-      <h2>Обратная связь</h2>
-      <p>Напишите отзыв или вопрос, или сообщите о ошибке сайта^^</p>
-      <form class="sub-form" onsubmit="return false;">
-        <input type="email" placeholder="Ваш вопрос...">
-        <button type="submit">Оправить</button>
-      </form>
+  <!-- sidebar -->
+  <div class="sidebar">
+
+    <div class="widget">
+      <div class="widget-title">Поиск мероприятий</div>
+      <div class="sidebar-search">
+        <input type="text" placeholder="Поиск..">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
     </div>
-    <div class="newsletter-img">💌</div>
+
+    <div class="widget">
+      <div class="widget-title">Категории</div>
+      <ul class="cat-list">
+        <li><span>Спокойные</span> <span class="count">(4)</span></li>
+        <li><span>Дискотеки</span> <span class="count">(3)</span></li>
+        <li><span>От-бюро</span> <span class="count">(6)</span></li>
+        <li><span>Киношные</span> <span class="count">(3)</span></li>
+        <li><span>Уличные</span> <span class="count">(4)</span></li>
+        <li><span>Лекции</span> <span class="count">(1)</span></li>
+      </ul>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">Иные мероприятия</div>
+
+      <div class="recent-post">
+        <img src="photo/QVvELfv3rULLg2b_F8iio3gCu84LoMqOP2nRV72M4t0Inm0F67aUsj2oMHLpgEYRzaMoqPp_1axhuAtz0rNF7T2v.jpg" alt="">
+        <div><h4>Кинокит-[прошёл]</h4><div class="d">Момент проведения:🕒 20.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/fDdQFbogymJvdM7N-s3t7z9RGiYuX80wnizJmoi8po2IXLZUOMdcmo-qXG_VmkOScNI-gTRWLnlKdvZfE2CT0YSG.jpg" alt="">
+        <div><h4>Финальная дискотека-[планируется]</h4><div class="d">Момент проведения:🕒 23.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/1wv-3Ri6AmYuaoioCi1QCgNG_TijUI3EvgQoDX0oeHBJ3yROe5hWH0GvlWZmdHCxt2dVG9O2OITcCt81H1liN1d-.jpg" alt="">
+        <div><h4>Танцевальная программа подиум-[прошла]</h4><div class="d">Момент проведения:🕒 23.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/D7lyzsYpZ6doES-JW1OahaWGFUGBGtFbU1EDz9ic3s6zQwqNtQSm6svK-PSqUtsHzCrAT6nLypGKzx_CrcZbSaDm.jpg" alt="">
+        <div><h4> Заполнение дневников-[планируется]</h4><div class="d">Момент проведения:🕒 17.07.2026</div></div>
+      </div>
+      <div class="recent-post">
+        <img src="photo/UCNtuHAZRR_bciztLfSE1MrJVn7C_VcnjH3Id0wW-utd8qRk4WEmmw0L8EJ5S1pyBrP-td52GkShbYVN3tApod42.jpg" alt="">
+        <div><h4>Показ итоговых проектов(районов)-[прошла]</h4><div class="d">Момент проведения:🕒 21.07.2026</div></div>
+      </div>
+    </div>
+
+    <div class="widget">
+      <div class="widget-title">Подсказки</div>
+      <div class="tags">
+        <span>Интересное</span><span>Бюро</span><span>На улице</span><span>Вечернее</span>
+        <span>Активные</span><span>У костра</span><span>Спокойное</span><span>Танцы</span>
+        <span>Работа</span><span>Факультативы</span><span>Районы</span>
+      </div>
+    </div>
+
   </div>
-</section>
+</div>
+
+
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
@@ -541,8 +410,10 @@
     © 2026 Wiki-ПГ. Все права защищены.
   </div>
 </footer>
+
 <div class="scroll-top" title="Наверх" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
 </div>
+
 </body>
 </html>
